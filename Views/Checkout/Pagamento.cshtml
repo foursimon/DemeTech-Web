@@ -1,0 +1,23 @@
+﻿@{
+	ViewData["Title"] = "Finalizar compra";
+}
+
+<section class="container d-flex flex-column justify-content-center align-items-center mb-4">
+	<form class="shadow-lg w-100 border border-2 rounded-3 border-dark-subtle account-form">
+		<div class="text-center">
+			<h1>Finalizar compra</h1>
+		</div>
+		<label>Endereço de entrega:</label>
+		<input class="form-control"  type="text" placeholder="Endereço" />
+		<label class="mt-4">Forma de pagamento</label>
+		<select class="form-select" id="pagar" name="pagar">
+			<option value="pix" selected>PIX</option>
+			<option value="debito">Débito</option>
+			<option value="credito">Crédito</option>
+		</select>
+		<div class="d-flex mt-4 justify-content-between">
+		<button type="submit" disabled class=" btn btn-success">Próximo</button>
+		<button asp-controller="Produto" asp-action="CatalogoDeProdutos" class="btn btn-success">Cancelar</button>
+		</div>
+	</form>
+</section>

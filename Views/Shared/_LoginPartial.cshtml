@@ -1,0 +1,34 @@
+﻿@* Esssa página chama-se "partial" (parcial) pois ela será implementada no header criado por Layout.cshtml
+
+Verificando se o usuário está logado ou não *@
+@if (Context.User.Identity.Name != null)
+{
+    @*Para o botão de sair da conta funcionar, é necessário estar em um formulário.*@
+    <form asp-controller="Conta" asp-action="EfetuarLogout" id="sairForm" class="navbar-right">
+        <ul class="nav gap-1 navbar-nav d-sm-inline-flex navbar-right">
+            <li class="nav-item align-self-md-center">
+                <img src="~/images/pessoaIcone.png" class="icon mb-1 me-1" />Olá @Context.User.Identity.Name
+            </li>
+            <li class="nav-item">
+                <button type="submit" class="btn ps-0 btn-link navbar-btn navbar-link">
+                    <img src="~/images/sairIcone.png" class="icon mb-1 me-1" />Sair da conta
+                </button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+	<ul class="nav navbar-nav navbar-right gap-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Conta" asp-action="Registrar">
+                <img src="~/images/registroIcone.png" class="icon mb-1 me-1" />Registrar-se
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Conta" asp-action="EfetuarLogin">
+                <img src="~/images/entrarIcone.png" class="icon me-1" />Logar em sua conta
+            </a>
+        </li>
+	</ul>
+}

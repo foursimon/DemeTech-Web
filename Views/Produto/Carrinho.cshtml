@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Carrinho";
+}
+@model List<ItensCarrinho>
+<div class="container">
+    <h1>Seus itens</h1>
+    @if (ViewBag.Message != null)
+    {
+        <div class="aviso w-100 alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@ViewBag.Message</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+        </div>
+    }
+
+    <hr>
+    <h3>Total de itens no carrinho: @ViewBag.QtdProduto</h3>
+    <h3>Preço Total: R$@ViewBag.PrecoTotal</h3>
+    <a class="btn btn-success" asp-controller="Checkout" asp-action="Pagamento">Comprar tudo</a>
+</div>
+
+
+<section class="container mb-4 mt-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var carrinho in Model)
+        {
+            if (carrinho.CodigoProdutoNavigation.Imagem != null)
+            {
+                var base64 = Convert.ToBase64String(carrinho.CodigoProdutoNavigation.Imagem);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                <div class="col">
+                    <div class="card card-menu h-100">
+                        <img src="@imgsrc" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@carrinho.CodigoProdutoNavigation.NomeDoProduto</h5>
+                            <p class="card-text">Código do alimento: @carrinho.CodigoProdutoNavigation.CodigoAlimento</p>
+                            <p class="card-text">Descrição: @carrinho.CodigoProdutoNavigation.Descricao</p>
+                            <p class="card-text">Preço: R$@carrinho.CodigoProdutoNavigation.Preco</p>
+                            <p class="card-text">Peso: @carrinho.CodigoProdutoNavigation.Peso</p>
+                            <a class="btn btn-success" asp-action="RemoverProduto" asp-route-alimentoPreco="@carrinho.CodigoProdutoNavigation.Preco" asp-route-id="@carrinho.ItensId" asp-route-carrinhoId="@carrinho.Carrinho.CarrinhoId">Remover do carrinho</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col">
+                    <div class="card card-menu h-100">
+                        <img src="~/images/alimentos.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@carrinho.CodigoProdutoNavigation.NomeDoProduto</h5>
+                            <p class="card-text">Código do alimento: @carrinho.CodigoProdutoNavigation.CodigoAlimento</p>
+                            <p class="card-text">Descrição: @carrinho.CodigoProdutoNavigation.Descricao</p>
+                            <p class="card-text">Preço: R$@carrinho.CodigoProdutoNavigation.Preco</p>
+                            <p class="card-text">Peso: @carrinho.CodigoProdutoNavigation.Peso</p>
+                            <a class="btn btn-success" asp-action="RemoverProduto" asp-route-alimentoPreco="@carrinho.CodigoProdutoNavigation.Preco" asp-route-id="@carrinho.ItensId" asp-route-carrinhoId="@carrinho.Carrinho.CarrinhoId">Remover do carrinho</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>

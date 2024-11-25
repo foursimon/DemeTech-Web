@@ -1,0 +1,61 @@
+﻿
+@{
+	ViewData["Title"] = "Criar conta";
+}
+@model DemeTech.Models.Cliente;
+
+<section class="container section-conta d-flex flex-column align-items-center mb-4">
+	@if (ViewBag.Message == "Cadastro realizado com sucesso.")
+	{
+		<div class="aviso w-100 alert alert-success alert-dismissible fade show" role="alert">
+			<strong>@ViewBag.Message <a class="" asp-action="EfetuarLogin" asp-controller="Conta">Clique aqui para realizar seu login.</a></strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+		</div>
+	}else if(ViewBag.Message != null)
+	{
+		<div class="aviso w-100 alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>@ViewBag.Message <a asp-action="EfetuarLogin" asp-controller="Conta">Gostaria de fazer login?</a></strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+		</div>
+	}
+	<form asp-action="Registrar" class="account-form shadow-lg w-100 border border-2 rounded-3 border-dark-subtle" asp-controller="Conta" method="post">
+		<div class="text-center">
+			<h1>Criar conta</h1>
+		</div>
+
+		<label>CNPJ</label>
+		<input type="number" placeholder="000000000000" class="form-control" asp-for="Cnpj" />
+		<span class="d-block text-danger" asp-validation-for="Cnpj"></span>
+
+		<label class="mt-4">Nome</label>
+		<input type="text" class="form-control" placeholder="Nome" asp-for="Nome" />
+		<span class="d-block text-danger" asp-validation-for="Nome"></span>
+
+		<label class="mt-4">Endereço</label>
+		<input type="text" class="form-control" placeholder="Endereço" asp-for="Endereco" />
+		<span class="d-block text-danger" asp-validation-for="Endereco"></span>
+
+		<label class="mt-4">Número de telefone</label>
+		<input type="number" class="form-control"  placeholder="00 000000000" asp-for="Numero" />
+		<span class="d-block text-danger" asp-validation-for="Numero"></span>
+
+		<label class="mt-4">Email</label>
+		<input type="email" class="form-control"  placeholder="exemplo@email.com" asp-for="Email" />
+		<span class="d-block text-danger" asp-validation-for="Email"></span>
+
+		<label class="mt-4">Senha</label>
+		<input type="password" class="form-control"  placeholder="Senha" asp-for="Senha" />
+		<span class="d-block text-danger" asp-validation-for="Senha"></span>
+
+		<div class="d-grid gap-2">
+			<button class="btn btn-success mt-3" type="submit">Confirmar</button>
+			<a class="btn btn-success"asp-controller="Conta" asp-action="EfetuarLogin">Já tem uma conta?</a>
+		</div>
+	</form>
+</section>
+
+<!--Validação em lado cliente com javascript disponibilizado pelo asp.net-->
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+

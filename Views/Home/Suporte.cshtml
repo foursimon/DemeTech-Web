@@ -1,0 +1,223 @@
+﻿@{
+    ViewData["Title"] = "Suporte";
+}
+
+<div class="container">
+    <h1>Do que você precisa?</h1>
+</div>
+<section class="container mt-3 mb-5 d-flex text-center justify-content-start gap-3 flex-column">
+    <!-- botão da modal de ajuda - criar conta-->
+    <button type="button" class="btn btn-success btn-ajuda" data-bs-toggle="modal" data-bs-target="#criarContaBackdrop">
+        Como cadastrar uma conta?
+    </button>
+
+    <!-- Modal de ajuda - criar conta -->
+    <div class="modal fade" id="criarContaBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content modal-ajuda">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Como cadastrar uma conta?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center align-items-center d-flex flex-column gap-3">
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Para fazer seu cadastro, clique no link <a asp-controller="Conta" asp-action="Registrar">Registrar-se</a> no canto superior direito do site para ser redirecionado à tela de cadastro. Dentro da página há um formulário para criar uma nova conta, preencha os campos requisitados antes confirmar a criação da nova conta.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/Criar conta form.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Ao inserir as informações corretamente, clique no botão <span class="alert-success">Confimar</span> que se encontra na parte de baixo do formulário</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/confirmar registro.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Caso algum dado inserido esteja incorreto, o formulário irá mostrar uma mensagem de erro indicando qual dado está errado e qual é o tipo de erro.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/Criar conta  (validacao).png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Ao cadastrar uma conta que possui o mesmo cnpj, irá aparecer uma mensagem falando que o cnpj cadastrado já está sendo usado por outro conta.
+                            O link <a asp-controller="Conta" asp-action="EfetuarLogin">Gostaria de fazer login?</a> irá redirecioná-lo à página de login caso você o clique.
+                        </p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/criar conta (falhou).png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>No sucesso da criação da sua nova conta, uma mensagem irá aparecer informando-o da completudide do registro e disponibilizará o link
+                            <a asp-controller="Conta" asp-action="Registrar">Clique aqui para realizar seu login</a> que o levará à página de login.
+                        </p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/criar conta (sucesso).png" />
+                    </div>
+                    <div>
+                        <p>O botão <span class="alert-success">Já tem uma conta?</span> abaixo de <span class="alert-success">Confirmar</span> também o leva à página de login ao clicar nele.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/confirmar registro.png" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- botão da modal de ajuda - entrar em uma conta-->
+    <button type="button" class="btn btn-success btn-ajuda" data-bs-toggle="modal" data-bs-target="#entrarContaBackdrop">
+        Como entro em minha conta?
+    </button>
+
+    <!-- Modal de ajuda - entrar em uma conta -->
+    <div class="modal fade" id="entrarContaBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content modal-ajuda">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Como entro em minha conta?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center align-items-center d-flex flex-column gap-3">
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Para entrar em sua conta, clique no link <a asp-controller="Conta" asp-action="EfetuarLogin">Logar em sua conta</a> no canto superior direito do site para ser redirecionado à tela de login. Dentro da página há um formulário para entrar em sua conta, preencha os campos requisitados antes confirmar o seu login.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/login form.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Assim como o formulário de cadastro de nova conta, este formulário também irá validar as informações enviadas. Caso alguma informação esteja errado, o sistema irá lhe informar o que está errado e qual é o erro.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/login (validacao).png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Após inserir os dados corretamente, clique em <span class="alert-success">Confirmar</span> para entrar em sua conta.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/confirmar login.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Ao clicar em confirmar, caso os dados inseridos forem válidos, o sistema irá lhe informar se o cnpj ou a senha inseridos estão corretos ou não. Caso não estejam corretos, uma mensagem dizendo <span class="alert-warning">"Login ou senha errados"</span> irá aparecer.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/login errado.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Caso sua conta seja encontrada, ou seja, ao inserir o login corretamente e clicar no botão <span class="alert-success">Confirmar</span>, você será redirecionado à página de <a asp-controller="Produto" asp-action="CatalogoDeProdutos">catálogo de produtos</a>. 
+                            Além disso, no canto superior direto do site, onde havia os links para registrar ou logar em uma conta, irá aparecer seu email e um botão para sair de sua conta.</p>
+                        <img class="w-75 border border-secondary border-3 rounded" src="~/images/suporteImagens/página catalogo.png" />
+                    </div>
+                    <div class="pb-3">
+                        <p>Caso queira criar uma conta nova, é possível ir direto à página de cadastro ao clicar no botão <span class="alert-success">Cadastrar nova conta?</span> que fica abaixo do botão <span class="alert-success">Confirmar</span>.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/confirmar login.png" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- botão da modal de ajuda - catálogo de produtos-->
+    <button type="button" class="btn btn-success btn-ajuda" data-bs-toggle="modal" data-bs-target="#catalogoBackdrop">
+        Como vejo os alimentos disponíveis para compra?
+    </button>
+
+    <!-- Modal de ajuda - catálogo de produtos -->
+    <div class="modal fade" id="catalogoBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content modal-ajuda">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Como vejo os alimentos disponíveis para compra?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center align-items-center d-flex flex-column gap-3">
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Para ver os alimentos disponíveis para compra, clique no link <a asp-controller="Produto" asp-action="CatalogoDeProdutos">Catálogo de produtos</a> na barra de navegação no topo do site para ser redirecionado à tela de catálogo. Não é necessário estar logado em sua conta para ver os alimentos, mas saiba que é preciso entrar em sua conta para poder realizar outras atividades.
+                             Clicando no link, você irá ver esta tela:</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/página catalogo.png"/>
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Nesta área, você pode filtrar quais tipos de alimentos você quer ver clicando no pequeno menu abaixo do titulo <b>Alimentos</b>.</p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/filtro alimentos.png" />
+                    </div>
+                    <div class="pb-3">
+                        <p>Além disso, é possível adicionar os itens disponíveis ao carrinho clicando no botão <span class="alert-success">Adicionar ao carrinho</span>, mas só se você esteja conectado em sua conta</p>
+                        <img class=" w-50 border border-secondary border-3 rounded mb-1" src="~/images/suporteImagens/alimento catalogo.png" />
+                        <img class=" w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/botao adicionar.png" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- botão da modal de ajuda - ver carrinho-->
+    <button type="button" class="btn btn-success btn-ajuda" data-bs-toggle="modal" data-bs-target="#carrinhoBackdrop">
+        Como vejo meu carrinho?
+    </button>
+
+    <!-- Modal de ajuda - ver carrinho-->
+    <div class="modal fade" id="carrinhoBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content modal-ajuda">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="carrinhoBackdropLabel">Como vejo meu carrinho?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center align-items-center d-flex flex-column gap-3">
+                    <div class="pb-3">
+                        <p>
+                            Para ver seu carrinho de compra, clique no link <a asp-controller="Produto" asp-action="Carrinho">Carrinho</a> na barra de navegação no topo do site para ser redirecionado à tela de carrinho. É necessário estar logado em sua conta para ver seu carrinho (ver seção de entrar em sua conta para saber como logar em uma conta).
+                            Clicando no link, você irá ver esta tela:
+                        </p>
+                        <img class="w-50 border border-secondary border-3 rounded" src="~/images/suporteImagens/carrinho vazio.png" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- botão da modal de ajuda - adicionar/remover prdouto-->
+    <button type="button" class="btn btn-success btn-ajuda" data-bs-toggle="modal" data-bs-target="#carrinhoAdRmBackdrop">
+        Como adiciono e removo os alimentos do carrinho?
+    </button>
+
+    <!-- Modal de ajuda - adicionar/remover prdoutoo-->
+    <div class="modal fade" id="carrinhoAdRmBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content modal-ajuda">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="carrinhoAdRmBackdropLabel">Como adiciono e removo os alimentos do carrinho?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center align-items-center d-flex flex-column gap-3">
+                    <div class="border-bottom border-5 pb-3">
+                        <h4 class="alert-warning">
+                            Antes de realizar os passos indicados nesta seção, certifique-se que você esteja conectado em sua conta.
+                        </h4>
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Para adicionar um iten ao carrinho, primeiro acesse o catálago de produtos (ver seção de catálogo de produtos se precisar) para ver os alimentos disponíveis. Nesta área, clique no botão <span class="alert-success">Adicionar ao carrinho</span> para adicionar o alimento em seu carrinho.</p>
+                        <p>Uma mensagem irá aparecer confirmando se sua ação foi registrada ou não.</p>
+                        <img class="w-50 border-secondary border border-3 rounded mb-1" src="~/images/suporteImagens/alimento catalogo.png" />
+                        <img class="w-50 border-secondary border border-3 rounded mb-1" src="~/images/suporteImagens/botao adicionar.png" />
+                        <img class="w-50 border-secondary border border-3 rounded" src="~/images/suporteImagens/alimento adicionado.png" />
+                    </div>
+                    <div class="border-bottom border-5 pb-3">
+                        <p>Ao adicionar o alimento, você poderá vê-lo em seu carrinho. Na área do carrinho estará todos os alimentos adicionados, a quantidade de alimentos no carrinho e o preço total de todos os produtos em seu carrinho.</p>
+                        <img class="w-50 border-secondary border border-3 rounded" src="~/images/suporteImagens/itens carrinho.png" />
+                    </div>
+                    <div class="pb-3">
+                        <p>Para remover um item do carrinho, clique no botão <span class="alert-success">Remover do carrinho</span> que fica no cartão do alimento.</p>
+                        <p>Ao remover um produto do carrinho, a quantidade de alimentos e o preço total serão reduzidos. Além disso, você verá uma mensagem informando que o produto foi removido do carrinho.</p>
+                        <img class="w-50 border-secondary border border-3 rounded mb-1" src="~/images/suporteImagens/alimento carrinho.png"/> 
+                        <img class="w-50 border-secondary border border-3 rounded mb-1" src="~/images/suporteImagens/botao remover.png"/> 
+                        <img class="w-50 border-secondary border border-3 rounded" src="~/images/suporteImagens/item removido.png"/> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Entendi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border border-secondary border-3 rounded p-3 mt-5">
+        <h4>Sua dúvida não foi atendida?</h4>
+        <p>Contate-nos: <a class="link-success suporte-tel text-decoration-none" href="mailto:demetech.suporte@gmail.com">
+            demetech suporte
+            <img  src="~/images/email.png" style="width: 30px"/>
+            </a></p>
+    </div>
+</section>

@@ -1,0 +1,213 @@
+﻿@{
+    ViewData["Title"] = "Catalogo de produtos";
+}
+@model List<Produto>
+
+<div class="container">
+    <h1>Alimentos</h1>
+    @if(ViewBag.Message != null)
+    {
+        <div class="aviso w-100 alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@ViewBag.Message</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+        </div>
+    }
+</div>
+<section class="container">
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="todos-tab" data-bs-toggle="tab" data-bs-target="#todos-tab-pane" type="button" role="tab" aria-controls="todos-tab-pane" aria-selected="true">Todos Alimentos disponíveis</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="frutas-tab" data-bs-toggle="tab" data-bs-target="#frutas-tab-pane" type="button" role="tab" aria-controls="frutas-tab-pane" aria-selected="false">Frutas</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="verduras-tab" data-bs-toggle="tab" data-bs-target="#verduras-tab-pane" type="button" role="tab" aria-controls="verduras-tab-pane" aria-selected="false">Verduras</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="raizes-tab" data-bs-toggle="tab" data-bs-target="#raizes-tab-pane" type="button" role="tab" aria-controls="raizes-tab-pane" aria-selected="false">Raízes</button>
+        </li>
+    </ul>
+    <div class="tab-content mb-4" id="myTabContent">
+        <div class="tab-pane fade show active" id="todos-tab-pane" role="tabpanel" aria-labelledby="todos-tab" tabindex="0">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var produto in Model){
+                    if (produto.Imagem != null)
+                    {
+                        var base64 = Convert.ToBase64String(produto.Imagem);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        <div class="col">
+                            <div class="card card-menu h-100">
+                                <img src="@imgsrc" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                    <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                    <p class="card-text">Descrição: @produto.Descricao</p>
+                                    <p class="card-text">Preço: R$@produto.Preco</p>
+                                    <p class="card-text">Peso: @produto.Peso</p>
+                                    <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                    <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                    <div class="col">
+                        <div class="card card-menu h-100">
+                                <img src="~/images/alimentos.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                    <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                    <p class="card-text">Descrição: @produto.Descricao</p>
+                                    <p class="card-text">Preço: R$@produto.Preco</p>
+                                    <p class="card-text">Peso: @produto.Peso</p>
+                                    <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                    <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                </div>
+                            </div>
+                    </div> 
+                    }
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="frutas-tab-pane" role="tabpanel" aria-labelledby="frutas-tab" tabindex="0">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var produto in Model)
+                {
+                    if (produto.Categoria.ToLower().Equals("fruta"))
+                    {
+                        if (produto.Imagem != null)
+                        {
+                            var base64 = Convert.ToBase64String(produto.Imagem);
+                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="@imgsrc" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="~/images/alimentos.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="verduras-tab-pane" role="tabpanel" aria-labelledby="verduras-tab" tabindex="0">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var produto in Model)
+                {
+                    if (produto.Categoria.ToLower().Equals("verdura"))
+                    {
+                        if (produto.Imagem != null)
+                        {
+                            var base64 = Convert.ToBase64String(produto.Imagem);
+                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="@imgsrc" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="~/images/alimentos.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+        <div class="tab-pane fade" id="raizes-tab-pane" role="tabpanel" aria-labelledby="raizes-tab" tabindex="0">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var produto in Model)
+                {
+                    if (produto.Categoria.ToLower().Equals("raiz"))
+                    {
+                        if (produto.Imagem != null)
+                        {
+                            var base64 = Convert.ToBase64String(produto.Imagem);
+                            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="@imgsrc" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col">
+                                <div class="card card-menu h-100">
+                                    <img src="~/images/alimentos.jpg" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@produto.NomeDoProduto</h5>
+                                        <p class="card-text">Código do alimento: @produto.CodigoAlimento</p>
+                                        <p class="card-text">Descrição: @produto.Descricao</p>
+                                        <p class="card-text">Preço: R$@produto.Preco</p>
+                                        <p class="card-text">Peso: @produto.Peso</p>
+                                        <a class="btn btn-success d-block mb-2" asp-action="AdicionarProduto" asp-route-codigo="@produto.CodigoAlimento">Adicionar ao carrinho</a>
+                                        <a class="btn btn-success d-block" asp-controller="Checkout" asp-action="Pagamento">Comprar produto</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

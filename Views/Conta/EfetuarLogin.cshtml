@@ -1,0 +1,42 @@
+﻿@{
+	ViewData["Title"] = "Logar";
+}
+@model DemeTech.Models.ClienteLogar;
+
+<section class="container section-conta d-flex flex-column justify-content-center align-items-center mb-4">
+
+	@if (ViewBag.Message == "Login realizado com sucesso.")
+	{
+		<div class="aviso w-100 alert alert-success alert-dismissible fade show" role="alert">
+			<strong>@ViewBag.Message</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+		</div>
+	}
+	else if (ViewBag.Message != null)
+	{
+		<div class="aviso w-100 alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>@ViewBag.Message</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+		</div>
+	}
+	<form asp-action="EfetuarLogin" class="account-form shadow-lg w-100 border border-2 rounded-3 border-dark-subtle" asp-controller="Conta" method="post">
+		<div class="text-center">
+			<h1>Login</h1>
+		</div>
+		<label>CNPJ</label>
+		<input type="number" class="form-control" placeholder="000000000000"asp-for="Cnpj" />
+		<span class="d-block text-danger" asp-validation-for="Cnpj"></span>
+		<label class="mt-4">Senha</label>
+		<input type="password" class="form-control" placeholder="Senha" asp-for="Senha" />
+		<span class="d-block text-danger" asp-validation-for="Senha"></span>
+		<div class="d-grid gap-2">
+			<button class="btn btn-success mt-4" type="submit">Confirmar</button>
+			<a class="btn btn-success" asp-action="Registrar">Cadastrar nova conta?</a>
+		</div>
+	</form>
+</section>
+
+<!--Validação em lado cliente com javascript disponibilizado pelo asp.net-->
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

@@ -1,0 +1,137 @@
+@import url(reset.css);
+
+html {
+    font-size: 14px;
+}
+
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.carousel-item{
+    height:500px;
+}
+
+.carousel-item img{
+    height:100%;
+    object-fit:cover;
+    object-position: top;
+}
+
+.carousel-item::before{
+    content:"";
+    width: 100%;
+    height:100%;
+    position: absolute;
+    background-image: linear-gradient(transparent, rgb(31,31,31));
+}
+
+main {
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon{
+    width: 25px;
+}
+.account-form{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.modal-ajuda img{
+    max-height: 420px;
+    max-width:300px;
+}
+
+.btn-ajuda{
+    max-width:250px;
+}
+
+.aviso{
+    max-width: 400px;
+}
+
+.suporte-tel img{
+    transition: 0.2s linear
+}
+
+
+.btn:focus:active, .btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.section-conta{
+    min-height: 500px;
+}
+
+h1.title-card__title{
+    animation: fadeIN 1.4s ease-in-out, deslocar 1.3s;
+}
+
+h2.title-card__title{
+    opacity: 0;
+    animation: fadeIN 2s ease-in-out forwards, deslocar 1.8s;
+    animation-delay: 0.3s; 
+}
+#demetechCarousel{
+    animation: fadeIN 0.8s;
+}
+@keyframes fadeIN {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+@media all and (pointer: fine){
+
+    .card:hover{
+        transform: scale(1.05);
+    }
+    .suporte-tel:hover{
+        text-decoration: underline !important;
+    }
+    .suporte-tel:hover img {
+        transform: translateY(-2px);
+    }
+}
+.card{
+    transition: 1s;
+}
+
+@keyframes deslocar{
+    0%{
+        transform: translateY(-50px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.card-menu img {
+    height: 300px;
+    object-fit: cover;
+    object-position: center
+}
