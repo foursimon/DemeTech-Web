@@ -14,7 +14,7 @@ namespace DemeTech
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-           builder.Services.AddDbContext<DemetechContext>(options => options.UseSqlServer("Server=tcp:gabrielcandido.database.windows.net,1433;Initial Catalog=DEMETECH;Persist Security Info=False;User ID=gabrielcandido;Password=@123tech;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=true;Connection Timeout=30;"));
+           builder.Services.AddDbContext<DemetechContext>(options => options.UseSqlServer("DefaultConnection"));
             //Para verificação de cookies
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie((options) =>
             {
